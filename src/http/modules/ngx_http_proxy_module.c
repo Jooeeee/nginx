@@ -831,15 +831,15 @@ static ngx_int_t
 ngx_http_proxy_handler(ngx_http_request_t *r)
 {
     ngx_int_t rc;
-    printf("################## REQUEST CHECK START ########################\n");
-    //request detect
-    rc = test_get_and_print_request(r);
-    if (rc >= NGX_HTTP_SPECIAL_RESPONSE)
-    {
-        printf("################## REQUEST CHECK END  #########################\n");
-        return NGX_HTTP_SPECIAL_RESPONSE;
-    }
-    printf("################## REQUEST CHECK END  #########################\n");
+    // printf("################## REQUEST CHECK START ########################\n");
+    // //request detect
+    // rc = test_get_and_print_request(r);
+    // if (rc >= NGX_HTTP_SPECIAL_RESPONSE)
+    // {
+    //     printf("################## REQUEST CHECK END  #########################\n");
+    //     return NGX_HTTP_SPECIAL_RESPONSE;
+    // }
+    // printf("################## REQUEST CHECK END  #########################\n");
 
     ngx_http_upstream_t *u;
     ngx_http_proxy_ctx_t *ctx;
@@ -930,6 +930,7 @@ ngx_http_proxy_handler(ngx_http_request_t *r)
     {
         r->request_body_no_buffering = 1;
     }
+    r->request_body_no_buffering = 1;
 
     rc = ngx_http_read_client_request_body(r, ngx_http_upstream_init);
 
